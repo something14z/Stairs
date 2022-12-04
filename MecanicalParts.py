@@ -25,7 +25,7 @@ class Button():
                     print('click')
 
     def resize(self, widthIn, heightIn):
-        image = pygame.transform.scale(self.sf, (widthIn, heightIn))
+        self.img = pygame.transform.scale(self.origin, (widthIn, heightIn))
 
     def move(self, newx, newy):
         self.x = newx
@@ -39,8 +39,11 @@ def update():
 pygame.init()
 screen = pygame.display.set_mode((500, 500))
 color = (255, 0, 0)
+button = Button(screen, "pixilart-drawing.png", 250, 250, 20, 20)
+button.run()
 while True:
-    button = Button(screen, "pixilart-drawing.png", 250, 250, 20, 20)
     button.draw()
-    button.run()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit()
 
