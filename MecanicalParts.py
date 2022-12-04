@@ -20,6 +20,8 @@ class Button():
         a = self.x + self.width
         b = self.y + self.height
         m_x, m_y = pos
+        self.dx = m_x - self.x
+        self.dy = m_y - self.y
         return (self.x <= m_x <= a) and (self.y <= m_y <= b)
 
 
@@ -27,8 +29,8 @@ class Button():
         self.img = pygame.transform.scale(self.origin, (widthIn, heightIn))
 
     def move(self, newx, newy):
-        self.x = newx
-        self.y = newy
+        self.x = newx - self.dx
+        self.y = newy - self.dy
 
 
 def update():
