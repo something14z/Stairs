@@ -4,15 +4,15 @@ import pygame
 class Button():
     def __init__(self, sf, img, width, height, x, y):
         self.sf = sf
-        self.img = img
+        self.origin = pygame.image.load(img)
+        self.img = pygame.transform.scale(self.origin, (40, 10))
         self.width = width
         self.height = height
         self.x = x
         self.y = y
 
     def draw(self, ):
-        image = pygame.image.load(self.img)
-        self.sf.blit(image, (self.x, self.y))
+        self.sf.blit(self.img, (self.x, self.y))
         pygame.display.flip()
 
     def run(self):
@@ -40,7 +40,7 @@ pygame.init()
 screen = pygame.display.set_mode((500, 500))
 color = (255, 0, 0)
 while True:
-    button = Button(screen, "apple.jpg", 250, 250, 20, 20)
+    button = Button(screen, "pixilart-drawing.png", 250, 250, 20, 20)
     button.draw()
     button.run()
 
@@ -86,7 +86,7 @@ pygame.init()
 screen = pygame.display.set_mode((500, 500))
 color = (255, 0, 0)
 while True:
-    button = Button(screen, "apple.jpg", 250, 250, 20, 20)
+    button = Button(screen, "pixilart-drawing.png", 250, 250, 20, 20)
     button.draw()
     button.run()
 
