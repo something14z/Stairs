@@ -41,7 +41,7 @@ pygame.init()
 screen = pygame.display.set_mode((500, 500))
 color = (255, 0, 0)
 button = Button(screen, "pixilart-drawing.png", 250, 250, 20, 20)
-while True:
+
     screen.fill(color)
     button.draw()
     for event in pygame.event.get():

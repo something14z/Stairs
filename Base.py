@@ -2,6 +2,7 @@ import pygame as pg
 import sys
 from Settings import*
 from Map import*
+from MecanicalParts import Button
 class Player():
     def __init__(self, inv, is_alive, stamina, location):
         self.inv = []
@@ -62,10 +63,25 @@ class Game :
             self.game_events()
             self.update()
             self.draw()
-
+main = Game()
 menu_on = True
+button = Button(mai.screen, "pixilart-drawing.png", 250, 250, 20, 20)
 if __name__ == '__main__':
-    main = Game()
+
+    screen.fill(color)
+    button.draw()
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            exit()
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            if button.check_click(event.pos):
+                button.drag = True
+        if event.type == pygame.MOUSEBUTTONUP:
+            button.drag = False
+        if event.type == pygame.MOUSEMOTION:
+            if button.drag:
+                button.move(*event.pos)
+    pygame.display.flip()
     if menu_on:
         main.draw_menu(menu_on)
     else:
